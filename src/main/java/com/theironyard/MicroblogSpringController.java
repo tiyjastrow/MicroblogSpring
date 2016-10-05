@@ -36,8 +36,7 @@ public class MicroblogSpringController {
 
     }
     @RequestMapping(path="/delete-message", method = RequestMethod.POST)
-    public String deleteMessage(HttpSession session, int id){
-//        session.setAttribute("id", id);
+    public String deleteMessage(int id){
         Message delete = new Message();
         for(Message m : messages){
             if(m.id == id){
