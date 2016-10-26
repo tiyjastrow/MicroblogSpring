@@ -4,6 +4,7 @@
 {{#name}} Hello, {{.}}!{{/name}}
 
 {{^name}}
+<br>
 <form action="/login" method="post">
     <input type="text" placeholder="Enter your name" name="userName"/>
     <button type="submit">Login</button>
@@ -11,7 +12,7 @@
 {{/name}}
 
 <form action="/add-message" method="post">
-    <input type="text" placeholder="Enter your message here" name="message"/>
+    <input type="text" placeholder="Enter your message here" size="100" name="message"/>
     <button type="submit">Post</button>
 </form>
 
