@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+{{^name}}
+<h2>Please login:</h2>
+<form action="/login" method="post">
+    <input type="text" placeholder="Enter your name" name="userName"/>
+    <button type="submit">Login</button>
+</form>
+{{/name}}
+
+
+{{#name}}<h2>Hello, {{.}}!</h2>
+
+<form action="/add-message" method="post">
+    <input type="text" placeholder="Enter your message" name="text"/>
+    <button type="submit">Submit</button>
+</form>
+<hr>
+<h3>Messages by {{name}}:</h3>
+
+{{^messageList}}
+No messages yet...
+{{/messageList}}
+
+{{#messageList}}
+ <form action="/delete?id={{id}}" method="post">{{id}}. {{text}}<input type="hidden" value="{{id}}" name="id">
+     <button type="submit">Delete</button></form>
+<br>
+
+{{/messageList}}
+
+
+{{/name}}
+</body>
+</html>
