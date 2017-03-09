@@ -29,9 +29,11 @@ No messages yet...
 {{/messageList}}
 
 {{#messageList}}
- <form action="/delete?id={{id}}" method="post">{{id}}. {{text}}<input type="hidden" value="{{id}}" name="id">
-     <button type="submit">Delete</button></form>
-<br>
+
+        <form action="/delete?id={{id}}" method="post">{{id}}. {{text}}<input type="hidden" value="{{id}}" name="id">
+            <button type="submit">Delete</button>
+        </form>
+        <br>
 
 {{/messageList}}
 

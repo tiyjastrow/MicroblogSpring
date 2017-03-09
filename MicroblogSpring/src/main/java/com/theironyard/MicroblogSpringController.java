@@ -14,6 +14,7 @@ public class MicroblogSpringController {
     static String loggedInUser = "loggedInUser";
     static ArrayList<Message> messageList = new ArrayList<>();
 
+
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, HttpSession session) {
         model.addAttribute("name", session.getAttribute(loggedInUser));
@@ -37,7 +38,14 @@ public class MicroblogSpringController {
 
     @RequestMapping(path = "/delete", method = RequestMethod.POST)
     public String delete(HttpSession session, int id) {
-        messageList.remove(id - 1);
+        int tempId = messageList.get((id-1)).id ;
+        messageList.remove(id-1);
+        for (Message message : messageList) {
+            if (message.id > tempId) {
+                message.id = (message.id-1);
+            }
+        }
+
         session.setAttribute("messageList", messageList);
         return "redirect:/";
     }
